@@ -105,6 +105,8 @@ type BrowserContext interface {
 	NewPage(options ...BrowserNewPageOptions) (Page, error)
 	// Returns all open pages in the context.
 	Pages() []Page
+	// Returns a handle for all background pages (eg. extensions) within the browser context.
+	BackgroundPages() []BackgroundPage
 	// This setting will change the default maximum navigation time for the following methods and related shortcuts:
 	// - Page.goBack()
 	// - Page.goForward()
@@ -1342,6 +1344,10 @@ type Page interface {
 	// Waits for the main frame to navigate to the given URL.
 	// Shortcut for main frame's Frame.waitForURL().
 	WaitForURL(url string, options ...FrameWaitForURLOptions) error
+}
+
+type BackgroundPage interface {
+	EventEmitter
 }
 
 // Whenever the page sends a request for a network resource the following sequence of events are emitted by `Page`:
