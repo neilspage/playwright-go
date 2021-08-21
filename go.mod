@@ -1,4 +1,4 @@
-module github.com/mxschmitt/playwright-go
+module github.com/neilspage/playwright-go
 
 go 1.14
 
